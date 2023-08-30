@@ -168,3 +168,9 @@ Patient must exist in order for this route to work properly
   message : la note du patient {1} est supprimer"
 ```
 
+## Note test-jacoco
+
+![test notes](https://github.com/HamzaBenalia/Note-Micro-Service/assets/99022185/93b55f31-ade0-4bbd-9aa5-bc7b02825cee)
+
+
+

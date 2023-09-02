@@ -23,6 +23,12 @@ public class RestExceptionHandler {
         return new Error(HttpStatus.NOT_FOUND, noteNotFoundException.getMessage());
     }
 
+    @ExceptionHandler(PatientNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public Error handlePatientNotFoundException(PatientNotFoundException patientNotFoundException, WebRequest request) {
+        return new Error(HttpStatus.NOT_FOUND, patientNotFoundException.getMessage());
+    }
+
     @ExceptionHandler(ServiceUnavailableException.class)
     @ResponseStatus(value = HttpStatus.SERVICE_UNAVAILABLE)
     public Error handleServiceUnavailableException(ServiceUnavailableException serviceUnavailableException, WebRequest request) {

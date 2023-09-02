@@ -1,5 +1,6 @@
 package com.mediscreen.notes.controllers;
 import com.mediscreen.notes.exception.NoteNotFoundException;
+import com.mediscreen.notes.exception.PatientNotFoundException;
 import com.mediscreen.notes.model.Note;
 import com.mediscreen.notes.services.NoteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +31,7 @@ public class NoteController {
     )
 
     @PostMapping
-    public Note createNote(@Valid @RequestBody Note note) {
+    public Note createNote(@Valid @RequestBody Note note) throws PatientNotFoundException {
         log.info("note créer avec succée: {}", note);
         return noteService.createNote(note);
     }
@@ -67,8 +68,9 @@ public class NoteController {
     @Operation(
             description = "update a note via the id endPoint"
     )
-    @PostMapping("/update/{id}")
-    public Note updateNote(@Valid @PathVariable String id, @RequestBody Note note) throws NoteNotFoundException {
+    @PutMapping("/update/{id}")
+    public Note updateNote(@Valid @PathVariable String id, @RequestBody Note note) throws NoteNotFoundException, PatientNotFoundException {
+
         log.info("Mise à jour de la note via le : {}", id);
         return noteService.updateNote(id, note);
     }
